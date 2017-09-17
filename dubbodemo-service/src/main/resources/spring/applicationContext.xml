@@ -17,5 +17,5 @@
 	<!-- 配置要扫描的包 -->
 	<context:component-scan base-package="cn.milo" />
 
-	<import resource="dubbo-provider.xml" />
+	<import resource="classpath:spring/dubbo-provider.xml" />
 </beans>
