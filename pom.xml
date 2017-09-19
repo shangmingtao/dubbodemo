@@ -3,18 +3,22 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>cn.milo.dubbodemo</groupId>
-	<artifactId>dubbodemo-parent</artifactId>
+	<artifactId>dubbodemo-common-parent</artifactId>
 	<version>1.0-SNAPSHOT</version>
 	<packaging>pom</packaging>
 
 	<modules>
-		<module>dubbodemo-service</module>
-		<module>dubbodemo-web</module>
-		<module>dubbodemo-facede</module>
+		<module>dubbodemo-user-service</module>
+		<module>dubbodemo-user-web</module>
+		<module>dubbodemo-user-facede</module>
+		<module>dubbodemo-common</module>
+		<module>dubbodemo-common-config</module>
+		<module>dubbodemo-common-core</module>
+		<module>dubbodemo-common-web</module>
 	</modules>
 
 
-	<name>dubbodemo-parent</name>
+	<name>dubbodemo-commom-parent</name>
 	<url>http://maven.apache.org</url>
 
 	<!-- 发布管理 -->
@@ -34,10 +38,17 @@
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<!-- child module -->
-		<dubbodemo-facede.version>1.0-SNAPSHOT</dubbodemo-facede.version>
-		<dubbodemo-service.version>1.0-SNAPSHOT</dubbodemo-service.version>
-		<dubbodemo-web.version>1.0-SNAPSHOT</dubbodemo-web.version>
+		<!-- commom -->
+		<dubbodemo-common.version>1.0-SNAPSHOT</dubbodemo-common.version>
+		<dubbodemo-common-core.version>1.0-SNAPSHOT</dubbodemo-common-core.version>
+		<dubbodemo-common-config.version>1.0-SNAPSHOT</dubbodemo-common-config.version>
+		<dubbodemo-common-web.version>1.0-SNAPSHOT</dubbodemo-common-web.version>
+		<!-- facede -->
+		<dubbodemo-user-facede.version>1.0-SNAPSHOT</dubbodemo-user-facede.version>
+		<!-- service -->
+		<dubbodemo-user-service.version>1.0-SNAPSHOT</dubbodemo-user-service.version>
+		<!-- web -->
+		<dubbodemo-user-web.version>1.0-SNAPSHOT</dubbodemo-user-web.version>
 		<!-- frameworks -->
 		<org.springframework.version>3.1.1.RELEASE</org.springframework.version>
 	</properties>
