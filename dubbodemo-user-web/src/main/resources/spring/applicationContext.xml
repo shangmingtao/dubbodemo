@@ -24,5 +24,6 @@
 	<context:property-placeholder location="classpath:system.properties" />
 
 	<import resource="dubbo-consumer.xml" />
+	<import resource="classpath:spring/spring-mq.xml" />
 
 </beans>

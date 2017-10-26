@@ -178,7 +178,13 @@
 			<dependency>
 				<groupId>org.apache.activemq</groupId>
 				<artifactId>activemq-all</artifactId>
-				<version>5.15.2</version>
+				<version>5.8.0</version>
+			</dependency>
+			<!-- activeMQ Spring-->
+			<dependency>
+				<groupId>org.apache.activemq</groupId>
+				<artifactId>activemq-pool</artifactId>
+				<version>5.8.0</version>
 			</dependency>
 		</dependencies>
 	</dependencyManagement>
