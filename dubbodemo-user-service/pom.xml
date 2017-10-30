@@ -139,12 +139,12 @@
             <artifactId>spring-webmvc-portlet</artifactId>
             <version>${org.springframework.version}</version>
         </dependency>
-        <!-- activemq -->
+        <producervemq -->
         <dependency>
             <groupId>org.apache.activemq</groupId>
             <artifactId>activemq-all</artifactId>
         </dependency>
-        <!-- activemq spring -->
+        <producervemq spring -->
         <dependency>
             <groupId>org.apache.activemq</groupId>
             <artifactId>activemq-pool</artifactId>

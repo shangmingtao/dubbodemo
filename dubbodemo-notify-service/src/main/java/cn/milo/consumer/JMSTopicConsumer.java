@@ -1,10 +1,8 @@
-package cn.milo.dubbonotify;
+package cn.milo.consumer;
 
-import org.apache.activemq.ActiveMQConnection;
 import org.apache.activemq.ActiveMQConnectionFactory;
 
 import javax.jms.*;
-import java.util.Date;
 
 
 
@@ -35,13 +33,17 @@ public class JMSTopicConsumer {
                     TextMessage message = (TextMessage) msg;
                     try {
                         System.out.println("--订阅者一收到消息：" +message.getText());
-//                        session.commit();
+                        if (message.getText().equals("1")){
+//                            throw new RuntimeException("exception a a");
+                        }
                     }catch(Exception e) {
                         e.printStackTrace();
                     }
                 }
             });
+//            session.commit();
 //            session.close();
+//            connection.stop();
 //            connection.close();
         }catch (JMSException e) {
             e.printStackTrace();

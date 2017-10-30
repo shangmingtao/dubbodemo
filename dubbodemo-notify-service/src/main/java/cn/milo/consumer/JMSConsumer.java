@@ -1,4 +1,4 @@
-package cn.milo.dubbonotify;
+package cn.milo.consumer;
 
 
 import javax.jms.Connection;
@@ -8,10 +8,16 @@ import javax.jms.JMSException;
 import javax.jms.MessageConsumer;
 import javax.jms.Session;
 import javax.jms.TextMessage;
-import org.apache.activemq.ActiveMQConnection;
+
 import org.apache.activemq.ActiveMQConnectionFactory;
 /**
  * Created by admin on 2017/10/26.
+ *
+ *
+ *
+ * http://blog.csdn.net/w938706428/article/details/45153705
+ * http://www.cnblogs.com/hapjin/p/5644402.html
+ * http://blog.csdn.net/songhaifengshuaige/article/details/54176849
  */
 public class JMSConsumer {
 
@@ -51,11 +57,13 @@ public class JMSConsumer {
                 TextMessage textMessage = (TextMessage) messageConsumer.receive(100000);
                 if(textMessage != null){
                     System.out.println("收到的消息:" + textMessage.getText());
+
                 }else {
                     break;
                 }
             }
-
+            session.close();
+            connection.close();
         } catch (JMSException e) {
             e.printStackTrace();
         }

@@ -11,11 +11,11 @@
 		<module>dubbodemo-user-service</module>
 		<module>dubbodemo-user-web</module>
 		<module>dubbodemo-user-facede</module>
+		<module>dubbodemo-notify-service</module>
 		<module>dubbodemo-common</module>
 		<module>dubbodemo-common-config</module>
 		<module>dubbodemo-common-core</module>
 		<module>dubbodemo-common-web</module>
-		<module>dubbodemo-notify-service</module>
 	</modules>
 
 
@@ -178,13 +178,13 @@
 			<dependency>
 				<groupId>org.apache.activemq</groupId>
 				<artifactId>activemq-all</artifactId>
-				<version>5.8.0</version>
+				<version>5.9.0</version>
 			</dependency>
 			<!-- activeMQ Spring-->
 			<dependency>
 				<groupId>org.apache.activemq</groupId>
 				<artifactId>activemq-pool</artifactId>
-				<version>5.8.0</version>
+				<version>5.9.0</version>
 			</dependency>
 		</dependencies>
 	</dependencyManagement>

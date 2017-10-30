@@ -1,4 +1,4 @@
-package cn.milo.activemq;
+package cn.milo.producer;
 
 import javax.jms.Connection;
 import javax.jms.ConnectionFactory;
@@ -8,7 +8,6 @@ import javax.jms.MessageProducer;
 import javax.jms.Session;
 import javax.jms.TextMessage;
 
-import org.apache.activemq.ActiveMQConnection;
 import org.apache.activemq.ActiveMQConnectionFactory;
 /**
  * 消息的生产者（发送者）
@@ -55,7 +54,7 @@ public class JMSProducer {
             sendMessage(session, messageProducer);
 
             session.commit();
-
+            session.close();
         } catch (Exception e) {
             e.printStackTrace();
         }finally{

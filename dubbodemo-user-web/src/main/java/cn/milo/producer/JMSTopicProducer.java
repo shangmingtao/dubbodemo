@@ -1,6 +1,4 @@
-package cn.milo.activemq;
-
-import java.util.Date;
+package cn.milo.producer;
 
 import javax.jms.*;
 
@@ -29,9 +27,9 @@ class JMSTopicProducer {
 //                Thread.sleep(1000);
                 producer.send(message);
                 System.out.println("--发送消息："  + i);
-                session.commit();
             }
-//            session.close();
+            session.commit();
+            session.close();
             conn.close();
         }catch(Exception e) {
             e.printStackTrace();

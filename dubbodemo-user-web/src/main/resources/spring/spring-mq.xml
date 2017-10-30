@@ -18,7 +18,7 @@
         <property name="password" value="${mq.password}"></property> 
 	</bean>
 
-	<!-- ActiveMQ为我们提供了一个PooledConnectionFactory，通过往里面注入一个ActiveMQConnectionFactory 可以用来将Connection、Session和MessageProducer池化，这样可以大大的减少我们的资源消耗。 要依赖于 activemq-pool包 -->
+	<!-- ActiveMQ为我们提供了一个PooledConnectionFactory，通过往里面注入一个ActiveMQConnectionFactory 可以用来将Connection、Session和MessageProducer池化，这样可以大大的减少我们的资源消耗。 要producervemq-pool包 -->
 	<bean id="pooledConnectionFactory" class="org.apache.activemq.pool.PooledConnectionFactory">
 		<property name="connectionFactory" ref="targetConnectionFactory" />
 		<property name="maxConnections" value="10" />
@@ -30,12 +30,37 @@
 		<property name="targetConnectionFactory" ref="pooledConnectionFactory" />
 	</bean>
 
-	<!-- Spring提供的JMS工具类，它可以进行消息发送、接收等 -->
 
-	<bean id="notifyJmsTemplate" class="org.springframework.jms.core.JmsTemplate">
-		<!-- 这个connectionFactory对应的是我们定义的Spring提供的那个ConnectionFactory对象 -->
-		<property name="connectionFactory" ref="connectionFactory" />
-		<property name="defaultDestinationName" value="${queueName.notify}"></property>
+	<!-- 定义消息Queue Destination -->
+	<bean id="queueDestination" class="org.apache.activemq.command.ActiveMQQueue">
+		<constructor-arg value="${queueName.notify}"/>
 	</bean>
 
+	<!-- 定义消息Topic Destination -->
+	<bean id="topicDestination"  class="org.apache.activemq.command.ActiveMQTopic">
+		<constructor-arg value="${topicName.notify}"/>
+	</bean>
+
+	<!-- Spring提供的JMS工具类，它可以进行消息发送、接收等 QueueTemplate -->
+	<bean id="queueJmsTemplate" class="org.springframework.jms.core.JmsTemplate">
+		<!-- 这个connectionFactory对应的是我们定义的Spring提供的那个ConnectionFactory对象 -->
+		<property name="connectionFactory" ref="connectionFactory" />
+		<property name="defaultDestination" ref="queueDestination"></property>
+	</bean>
+
+	<!-- Spring提供的JMS工具类，它可以进行消息发送、接收等 TopicTemplate -->
+	<bean id="topicJmsTemplate" class="org.springframework.jms.core.JmsTemplate">
+		<!-- 这个connectionFactory对应的是我们定义的Spring提供的那个ConnectionFactory对象 -->
+		<property name="connectionFactory" ref="connectionFactory" />
+		<property name="defaultDestination" ref="topicDestination"/>
+		<property name="pubSubDomain" value="true"/>
+		<property name="receiveTimeout" value="10000" />
+		<!-- deliveryMode, priority, timeToLive 的开关要生效，必须配置为true，默认false-->
+		<property name="explicitQosEnabled" value="true"/>
+		<!-- 发送模式
+             DeliveryMode.NON_PERSISTENT=1:非持久 ;
+             DeliveryMode.PERSISTENT=2:持久
+        -->
+		<property name="deliveryMode" value="1"/>
+	</bean>
 </beans>
