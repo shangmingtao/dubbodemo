@@ -21,5 +21,8 @@ public class JMSSpringQueueListener implements SessionAwareMessageListener<Messa
     public void onMessage(Message message, Session session) throws JMSException {
         ActiveMQTextMessage message1 = (ActiveMQTextMessage) message;
         log.info("spring queue comsumer 接到消息 = " + message1.getText());
+        if (message1.getText().equals("ActiveMQ 发送消息5")){
+            message.acknowledge();
+        }
     }
 }

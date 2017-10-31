@@ -24,8 +24,9 @@ public class JMSTopicConsumer {
         Connection connection;
         try{
             connection= connectionFactory.createConnection();
+            connection.setClientID("client1");
             connection.start();
-            final Session session = connection.createSession(Boolean.TRUE,Session.AUTO_ACKNOWLEDGE);
+            final Session session = connection.createSession(Boolean.FALSE,Session.CLIENT_ACKNOWLEDGE);
             Topic topic = session.createTopic(subject);
             MessageConsumer consumer = session.createConsumer(topic);
             consumer.setMessageListener(new MessageListener() {
@@ -33,7 +34,8 @@ public class JMSTopicConsumer {
                     TextMessage message = (TextMessage) msg;
                     try {
                         System.out.println("--订阅者一收到消息：" +message.getText());
-                        if (message.getText().equals("1")){
+                        if (message.getText().equals("4")){
+                            message.acknowledge();
 //                            throw new RuntimeException("exception a a");
                         }
                     }catch(Exception e) {

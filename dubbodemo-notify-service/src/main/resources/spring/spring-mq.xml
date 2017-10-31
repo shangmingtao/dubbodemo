@@ -48,6 +48,8 @@
 		<property name="connectionFactory" ref="connectionFactory"></property>
 		<property name="destination" ref="queueDestination"></property>
 		<property name="messageListener" ref="JMSSpringQueueLintener"></property>
+		<property name="sessionTransacted" value="false"/>
+		<property name="sessionAcknowledgeMode" value="4"/>
 	</bean>
 	<!-- queue Linstener end -->
 
@@ -69,7 +71,7 @@
              Session.CLIENT_ACKNOWLEDGE  客户端调用acknowledge方法手动签收
              Session.DUPS_OK_ACKNOWLEDGE 不必必须签收，消息可能会重复发送
         -->
-		<property name="sessionAcknowledgeMode" value="1"/>
+		<property name="sessionAcknowledgeMode" value="2"/>
 	</bean>
 	<!-- topic Linstener end -->
 

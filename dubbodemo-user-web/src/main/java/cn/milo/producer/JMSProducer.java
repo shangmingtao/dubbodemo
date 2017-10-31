@@ -45,7 +45,7 @@ public class JMSProducer {
             //启动连接
             connection.start();
             //创建session
-            session = connection.createSession(true, Session.AUTO_ACKNOWLEDGE);
+            session = connection.createSession(false, Session.CLIENT_ACKNOWLEDGE);
             //创建一个名称为HelloWorld的消息队列
             destination = session.createQueue("HelloWorld");
             //创建消息生产者
@@ -53,7 +53,7 @@ public class JMSProducer {
             //发送消息
             sendMessage(session, messageProducer);
 
-            session.commit();
+//            session.commit();
             session.close();
         } catch (Exception e) {
             e.printStackTrace();
